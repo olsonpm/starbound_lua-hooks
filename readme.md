@@ -22,16 +22,16 @@ further info.
 Given there's no way for a mod to patch lua files, vanilla starbound files are
 best left untouched.  However in order for me to create my [health monitor](https://github.com/olsonpm/starbound_health-monitor)
 I needed to modify `player_primary.lua`.  Instead of modifying the file outright
-I wanted to create a reusable pattern that allowed me to safely run code in the
-context of vanilla files.  This mod both accomplished that goal and allowed mods
-to expose hooks into their own files.  You can see an example of that in my
-[quest scope hook mod](https://github.com/olsonpm/starbound_health-monitor)
+I wanted to create a reusable pattern that allowed all mods to safely run code
+in the context of vanilla files.  This mod both accomplished that goal and
+allowed mods to expose hooks into their own files.  You can see an example of
+that in my [quest scope hook mod](https://github.com/olsonpm/starbound_health-monitor)
 whose soul purpose is to allow other mods to run code inside the context of an
 ever-lasting invisible quest.
 
 
 ### How to install it
-*todo*
+[Like this](https://github.com/olsonpm/starbound_health-monitor/blob/master/docs/how-to-install.md)
 
 
 ### How it works
@@ -130,7 +130,26 @@ vanilla files.
 
 
 ##### The initialization function
-*todo*
+*Bare with me because this isn't easy to explain.  Also if you can think of a
+better way to explain it please let me know.  Good documentation is very
+important to me.*
+
+This function is a little goofy due to us not having the global `root` table
+available to us when the file first loads.  It's also goofy because there will
+be multiple scripting contexts (not sure if that's the right term) running
+simultaneously, and each one will need to have its own copy of `luaHooks`.  As
+far as I can tell, there's no way for me to load `luaHooks` once and have all
+scripting contexts use it, thus we need to run the initialization function
+before any hooks are actually run.
+
+**So what is the initialization function anyway?**
+It's [`initIfNotAlready`](https://github.com/olsonpm/starbound_lua-hooks/blob/master/src/luahooks/hooks.lua#L40-L48)
+and for example is called in the [`init()` of `player_primary.lua`](https://github.com/olsonpm/starbound_lua-hooks/blob/master/src/stats/player_primary.lua#L7)
+
+We can run it there because `root` is available at that time.  Note how it's run
+before the player_primary [init hooks are run](https://github.com/olsonpm/starbound_lua-hooks/blob/master/src/stats/player_primary.lua#L28).
+Because [we ensure the object won't initialize more than once](https://github.com/olsonpm/starbound_lua-hooks/blob/master/src/luahooks/hooks.lua#L41-L42),
+we can follow this pattern safely throughout the codebase.
 
 
 ### Limitations
