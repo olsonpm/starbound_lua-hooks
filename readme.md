@@ -142,7 +142,7 @@ far as I can tell, there's no way for me to load `luaHooks` once and have all
 scripting contexts use it, thus we need to run the initialization function
 before any hooks are actually run.
 
-**So what is the initialization function anyway?**
+**So what is the initialization function anyway?**  
 It's [`initIfNotAlready`](https://github.com/olsonpm/starbound_lua-hooks/blob/master/src/luahooks/hooks.lua#L40-L48)
 and for example is called in the [`init()` of `player_primary.lua`](https://github.com/olsonpm/starbound_lua-hooks/blob/master/src/stats/player_primary.lua#L7)
 
