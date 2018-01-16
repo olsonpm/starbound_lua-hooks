@@ -23,11 +23,11 @@ Given there's no way for a mod to patch lua files, vanilla starbound files are
 best left untouched.  However in order for me to create my [health monitor](https://github.com/olsonpm/starbound_health-monitor)
 I needed to modify `player_primary.lua`.  Instead of modifying the file outright
 I wanted to create a reusable pattern that allowed me to safely run code in the
-context of vanilla files.  This mod both accomplished that goal as well as the
-added benefit of mods being able to expose hooks into their own files.  You can
-see an example of that in my [quest scope hook mod](https://github.com/olsonpm/starbound_health-monitor)
+context of vanilla files.  This mod both accomplished that goal and allowed mods
+to expose hooks into their own files.  You can see an example of that in my
+[quest scope hook mod](https://github.com/olsonpm/starbound_health-monitor)
 whose soul purpose is to allow other mods to run code inside the context of an
-ever-existing invisible quest.
+ever-lasting invisible quest.
 
 
 ### How to install it
@@ -96,7 +96,7 @@ holds a table (list) of functions which will all be called when
 
 2. An initialization function which you only have to worry about if you want to
    expose hooks in your own mod (I do that for example in my
-   [quest-scope-hook mod](https://github.com/olsonpm/starbound_quest-scope-hook).
+   [quest-scope-hook mod](https://github.com/olsonpm/starbound_quest-scope-hook)).
    Documentation for the init function [is below](#the-initialization-function).
 
 So to run `makePlayerInvincible()` upon `player_primary.lua -> init()`, we would
