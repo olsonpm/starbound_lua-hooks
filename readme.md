@@ -54,7 +54,7 @@ function `makePlayerInvincible()` that must be run inside
 add its own initscript to the array.
 
 ```
--- /mods/invincible/my-initscripts.lua
+-- /mods/invincible/my-initscript.lua
 
 --
 -- Just to make sure our file is run like we expect
@@ -68,7 +68,7 @@ sb.logInfo("invincible: hey this ran!")
   {
     "op": "add",
     "path": "/initscripts/-",
-    "value": "/my-initscripts.lua"
+    "value": "/my-initscript.lua"
   }
 ]
 ```
@@ -100,10 +100,10 @@ holds a table (list) of functions which will all be called when
    Documentation for the init function [is below](#the-initialization-function).
 
 So to run `makePlayerInvincible()` upon `player_primary.lua -> init()`, we would
-modify our `/mods/invincible/my-initscripts.lua` file like so:
+modify our `/mods/invincible/my-initscript.lua` file like so:
 
 ```lua
--- /mods/invincible/my-initscripts.lua
+-- /mods/invincible/my-initscript.lua
 
 local functionsToRunOnInit = luaHooks.vanilla["/stats/player_primary.lua"].onInit
 
@@ -130,7 +130,7 @@ vanilla files.
 
 
 ##### The initialization function
-*Bare with me because this isn't easy to explain.  Also if you can think of a
+*Bear with me because this isn't easy to explain.  Also if you can think of a
 better way to explain it please let me know.  Good documentation is very
 important to me.*
 
