@@ -3,5 +3,5 @@
   "description": "Provides hooks into vanilla lua files allowing multiple mods to modify vanilla behavior.",
   "friendlyName": "Lua Hooks",
   "name": "lua hooks",
-  "version": "0.1"
+  "version": "0.2"
 }

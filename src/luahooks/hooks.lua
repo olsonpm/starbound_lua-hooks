@@ -11,20 +11,6 @@ local initHasRun = false
 
 luaHooks = {
   --
-  -- the `vanilla` property is unnecessary but will hopefully make the code more
-  --   readable.  For example my quest-scope-hook mod exposes its own hooks so
-  --   I add the property `luaHooks.questScopeHook`.  Now it's obvious whether
-  --   whether my health-monitor is adding hooks to vanilla or
-  --   quest-scope-hook functions
-  --
-  vanilla = {
-    ["/stats/player_primary.lua"] = {
-      onInit = {},
-      onUpdate = {}
-    }
-  },
-
-  --
   -- only call this if you're exposing a hook within your own mod.  See
   --   https://github.com/olsonpm/starbound_quest-scope-hook for an example
   --
