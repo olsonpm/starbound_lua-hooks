@@ -11,8 +11,7 @@
 
 ### What is it?
 This mod enables dependent mods to run code inside vanilla starbound files
-without modifying the file themselves.  See [how it works](#how-it-works) for
-further info.
+without modifying the file themselves.
 
 
 ### Why create it?
